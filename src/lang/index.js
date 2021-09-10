@@ -9,12 +9,17 @@ import enLocale from './en'
 import zhLocale from './zh'
 import esLocale from './es'
 import jaLocale from './ja'
+import koLocale from './ko'
 
 Vue.use(VueI18n)
 
 const messages = {
   en: {
     ...enLocale,
+    ...elementEnLocale
+  },
+  ko: {
+    ...koLocale,
     ...elementEnLocale
   },
   zh: {

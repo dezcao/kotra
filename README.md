@@ -225,3 +225,7 @@ Modern browsers and Internet Explorer 10+.
 [MIT](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
 
 Copyright (c) 2017-present PanJiaChen
+
+
+## sample doc
+pure 브랜치는 최초 샘플을 받은 상태. 기본 설정을 참조할 때 쓰려고 두었음.
