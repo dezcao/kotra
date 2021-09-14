@@ -2,7 +2,6 @@ export default {
   route: {
     dashboard: 'Kotra',
 
-
     bizManage: '사업관리',
     consulting: '사업별 상담',
     schedule: '사업별 일정',
@@ -20,7 +19,7 @@ export default {
     statisticBiz: '사업별 통계',
     statisticTrade: '무역관별 통계',
     statisticCompany: '기업별 통계',
-    
+
     etc: '기타',
     ectUser: '사용자권한관리',
     etcCompany: '대행업체 관리',
@@ -30,6 +29,9 @@ export default {
     etcQA: 'Q&A관리',
     etcCode: '코드관리',
 
+    kotra: '코트라',
+    demo: '데모',
+    calendar: '달력'
 
     // documentation: 'Documentation',
     // guide: 'Guide',

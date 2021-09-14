@@ -357,6 +357,38 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/kotra', // 데모 페이지
+    component: Layout,
+    redirect: '/kotra/demo',
+    alwaysShow: true, // will always show the root menu
+    name: 'Kotra',
+    meta: {
+      title: 'kotra', // will i18n route.permission
+      icon: 'lock',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'demo',
+        component: () => import('@/views/components-demo/kotra'),
+        name: 'KotraDemo',
+        meta: {
+          title: 'demo',
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
+      },
+      {
+        path: 'calendar',
+        component: () => import('@/views/components-demo/calendar'),
+        name: 'KotraCalendar',
+        meta: {
+          title: 'calendar',
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
+      }
+    ]
+  },
 
   // 아래는 처음부터 있던것.
   // {

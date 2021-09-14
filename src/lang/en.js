@@ -29,6 +29,9 @@ export default {
     etcQA: 'etcQA',
     etcCode: 'etcCode',
 
+    kotra: 'Kotra',
+    demo: 'Demo',
+    calendar: 'Calendar'
 
     // documentation: 'Documentation',
     // guide: 'Guide',
