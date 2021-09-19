@@ -114,7 +114,9 @@
       <el-table-column property="company_cnt" label="참여기업" width="80"></el-table-column>
       <el-table-column property="status_nm" label="상담주선" width="80"></el-table-column>
       <el-table-column property="status" label="상담주선 설정">
-        <el-button>설정</el-button>
+        <template slot-scope="scope">
+          <el-button @click="$router.push(`/biz/consulting/edit/${scope.row.rownum}`)">설정</el-button>
+        </template>
       </el-table-column>
     </el-table>
 
@@ -135,7 +137,7 @@
 
 <script>
 export default {
-  name: "BizConsulting",
+  name: "BizConsultingList",
   data() {
     return {
       form: {

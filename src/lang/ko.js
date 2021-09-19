@@ -4,6 +4,8 @@ export default {
 
     bizManage: '사업관리',
     consulting: '사업별 상담',
+    consultingList: '사업별 상담 목록',
+    consultingSetup: '사업별 상담 설정',
     schedule: '사업별 일정',
     performance: '사업별 실적',
     buyerRequest: '바이어 신청 내역',

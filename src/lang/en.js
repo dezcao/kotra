@@ -4,6 +4,8 @@ export default {
 
     bizManage: 'bizManage',
     consulting: 'consulting',
+    consultingList: 'consultingList',
+    consultingSetup: 'consultingSetup',
     schedule: 'schedule',
     performance: 'performance',
     buyerRequest: 'buyerRequest',

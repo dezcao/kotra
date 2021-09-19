@@ -133,7 +133,7 @@ export const asyncRoutes = [
   {
     path: '/biz', // 사업관리 - 사업별 상담, 사업별 일정, 사업별 실적, 바이어 신청 내역
     component: Layout,
-    redirect: '/biz/consulting',
+    redirect: '/biz/consulting/list',
     alwaysShow: true, // will always show the root menu
     name: 'Biz',
     meta: {
@@ -143,13 +143,17 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'consulting',
-        component: () => import('@/views/kotra/biz/consulting'),
-        name: 'BizConsulting',
-        meta: {
-          title: 'consulting',
-          roles: ['admin'] // or you can only set roles in sub nav
-        }
+        path: 'consulting/list',
+        component: () => import('@/views/kotra/biz/consulting_list'), // 상담주선
+        name: 'BizConsultingList',
+        meta: { title: "consulting" }
+      },
+      {
+        path: 'consulting/edit/:id',
+        component: () => import('@/views/kotra/biz/consulting_edit'), // 상담 주선 설정
+        name: 'BizConsultingSetup',
+        meta: { title: "consultingSetup", noCache: true, activeMenu: '/biz/consulting/list' },
+        hidden: true,
       },
       {
         path: 'schedule',
