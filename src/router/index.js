@@ -144,7 +144,7 @@ export const asyncRoutes = [
     children: [
       {
         path: 'consulting',
-        component: () => import('@/views/permission/page'),
+        component: () => import('@/views/kotra/biz/consulting'),
         name: 'BizConsulting',
         meta: {
           title: 'consulting',
