@@ -33,9 +33,13 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      commit('SET_TOKEN', 'admin-token')
-      setToken('admin-token')
-      resolve()
+      try {
+        commit('SET_TOKEN', 'admin-token')
+        setToken('admin-token')
+        resolve()
+      } catch (error) {
+        reject(error)
+      }
 
       // login({ username: username.trim(), password: password }).then(response => {
       //   const { data } = response
@@ -51,18 +55,22 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      let data = {
-        roles: ['admin'],
-        introduction: 'I am a super administrator',
-        avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-        name: 'Super Admin'
+      try {
+        let data = {
+          roles: ['admin'],
+          introduction: 'I am a super administrator',
+          avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+          name: 'Super Admin'
+        }
+        const { roles, name, avatar, introduction } = data
+        commit('SET_ROLES', roles)
+        commit('SET_NAME', name)
+        commit('SET_AVATAR', avatar)
+        commit('SET_INTRODUCTION', introduction)
+        resolve(data)
+      } catch (error) {
+        reject(error)
       }
-      const { roles, name, avatar, introduction } = data
-      commit('SET_ROLES', roles)
-      commit('SET_NAME', name)
-      commit('SET_AVATAR', avatar)
-      commit('SET_INTRODUCTION', introduction)
-      resolve(data)
 
       // getInfo(state.token).then(response => {
       //   const { data } = response
