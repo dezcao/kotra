@@ -57,6 +57,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       try {
         let data = {
+          code
           roles: ['admin'],
           introduction: 'I am a super administrator',
           avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
@@ -100,16 +101,21 @@ const actions = {
   // user logout
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
-      commit('SET_TOKEN', '')
-      commit('SET_ROLES', [])
-      removeToken()
-      resetRouter()
+      try {
+        commit('SET_TOKEN', '')
+        commit('SET_ROLES', [])
+        removeToken()
+        resetRouter()
 
-      // reset visited views and cached views
-      // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
-      dispatch('tagsView/delAllViews', null, { root: true })
+        // reset visited views and cached views
+        // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
+        dispatch('tagsView/delAllViews', null, { root: true })
 
-      resolve()
+        resolve()
+      } catch (error) {
+        reject(error)
+      }
+      
       
       // logout(state.token).then(() => {
       //   commit('SET_TOKEN', '')
