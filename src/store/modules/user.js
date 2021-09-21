@@ -57,7 +57,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       try {
         let data = {
-          code
           roles: ['admin'],
           introduction: 'I am a super administrator',
           avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
