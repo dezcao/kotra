@@ -12,7 +12,7 @@ export default {
 
     consultingManage: '상담관리',
     consultingMatch: '상담주선',
-    consultingCompany: '상담기업',
+    consultingCompany: '참가기업',
     consultingAccept: '상담승인',
     consultingSchedule: '상담일정',
     consultingResult: '상담결과',

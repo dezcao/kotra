@@ -138,7 +138,7 @@ export const asyncRoutes = [
     name: 'Biz',
     meta: {
       title: 'bizManage', // will i18n route.permission
-      icon: 'lock',
+      icon: 'el-icon-suitcase',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
     children: [
@@ -192,14 +192,14 @@ export const asyncRoutes = [
     name: 'Consulting',
     meta: {
       title: 'consultingManage', // will i18n route.permission
-      icon: 'lock',
+      icon: 'el-icon-chat-dot-square',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
     children: [
       {
         path: 'match',
-        component: () => import('@/views/permission/page'),
-        name: 'ConsultingMatch',
+        component: () => import('@/views/kotra/consulting/match_list'),
+        name: 'ConsultingMatchList',
         meta: {
           title: 'consultingMatch',
           roles: ['admin'] // or you can only set roles in sub nav
@@ -207,7 +207,7 @@ export const asyncRoutes = [
       },
       {
         path: 'company',
-        component: () => import('@/views/permission/page'),
+        component: () => import('@/views/kotra/consulting/company'),
         name: 'ConsultingCompany',
         meta: {
           title: 'consultingCompany',
@@ -216,8 +216,8 @@ export const asyncRoutes = [
       },
       {
         path: 'accept',
-        component: () => import('@/views/permission/page'),
-        name: 'ConsultingAccept',
+        component: () => import('@/views/kotra/consulting/accept_list'),
+        name: 'ConsultingAcceptList',
         meta: {
           title: 'consultingAccept',
           roles: ['admin'] // or you can only set roles in sub nav
@@ -225,7 +225,7 @@ export const asyncRoutes = [
       },
       {
         path: 'schedule',
-        component: () => import('@/views/permission/page'),
+        component: () => import('@/views/kotra/consulting/schedule'),
         name: 'ConsultingSchedule',
         meta: {
           title: 'consultingSchedule',
@@ -234,8 +234,8 @@ export const asyncRoutes = [
       },
       {
         path: 'result',
-        component: () => import('@/views/permission/page'),
-        name: 'ConsultingResult',
+        component: () => import('@/views/kotra/consulting/result_list'),
+        name: 'ConsultingResultList',
         meta: {
           title: 'consultingResult',
           roles: ['admin'] // or you can only set roles in sub nav
@@ -251,7 +251,7 @@ export const asyncRoutes = [
     name: 'Statistic',
     meta: {
       title: 'statistic', // will i18n route.permission
-      icon: 'lock',
+      icon: 'chart',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
     children: [
@@ -292,7 +292,7 @@ export const asyncRoutes = [
     name: 'Etc',
     meta: {
       title: 'etc', // will i18n route.permission
-      icon: 'lock',
+      icon: 'el-icon-s-operation',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
     children: [
