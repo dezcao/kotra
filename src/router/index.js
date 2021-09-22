@@ -157,7 +157,7 @@ export const asyncRoutes = [
       },
       {
         path: 'schedule',
-        component: () => import('@/views/theme/index'),
+        component: () => import('@/views/kotra/biz/schedule'), // 상담주선
         name: 'BizSchedule',
         meta: {
           title: 'schedule'
@@ -166,8 +166,8 @@ export const asyncRoutes = [
       },
       {
         path: 'performance',
-        component: () => import('@/views/permission/directive'),
-        name: 'BizPerformance',
+        component: () => import('@/views/kotra/biz/performance_list'), // 상담주선
+        name: 'BizPerformanceList',
         meta: {
           title: 'performance'
           // if do not set roles, means: this page does not require permission
@@ -175,8 +175,8 @@ export const asyncRoutes = [
       },
       {
         path: 'buyerRequest',
-        component: () => import('@/views/permission/directive'),
-        name: 'BizBuyerRequest',
+        component: () => import('@/views/kotra/biz/buyer_request_list'),
+        name: 'BizBuyerRequestList',
         meta: {
           title: 'buyerRequest'
           // if do not set roles, means: this page does not require permission

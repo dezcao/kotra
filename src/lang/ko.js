@@ -8,7 +8,7 @@ export default {
     consultingSetup: '사업별 상담 설정',
     schedule: '사업별 일정',
     performance: '사업별 실적',
-    buyerRequest: '바이어 신청 내역',
+    buyerRequest: '사업 참가 신청',
 
     consultingManage: '상담관리',
     consultingMatch: '상담주선',
