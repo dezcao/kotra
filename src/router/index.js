@@ -157,7 +157,7 @@ export const asyncRoutes = [
       },
       {
         path: 'schedule',
-        component: () => import('@/views/permission/directive'),
+        component: () => import('@/views/theme/index'),
         name: 'BizSchedule',
         meta: {
           title: 'schedule'
