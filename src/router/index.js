@@ -257,8 +257,8 @@ export const asyncRoutes = [
     children: [
       {
         path: 'biz',
-        component: () => import('@/views/permission/page'),
-        name: 'StatisticBiz',
+        component: () => import('@/views/kotra/statistic/biz_chart'),
+        name: 'BizChart',
         meta: {
           title: 'statisticBiz',
           roles: ['admin'] // or you can only set roles in sub nav
