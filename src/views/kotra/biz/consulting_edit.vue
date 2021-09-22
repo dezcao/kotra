@@ -42,7 +42,7 @@
               <el-col :span="24">
                 <el-form-item label-width="180px" label="담당자설정">
                   <div class="block">
-                  <el-button type="primary">설정</el-button>
+                  <el-button type="primary" @click="setAdminUser">설정</el-button>
                   </div>
                 </el-form-item>
               </el-col>
@@ -198,12 +198,102 @@
         </el-col>
       </el-row>
     </el-card>
+
+    <el-dialog
+      title="담당자 설정"
+      :visible.sync="dialogAdminUser"
+      width="70%">
+      <el-form>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label-width="180px" label="권한 선택">
+              <el-radio v-model="adminUserForm.auth" label="1">단일사업</el-radio>
+              <el-radio v-model="adminUserForm.auth" label="2">상담주선</el-radio>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label-width="180px" label="담당자 추가">
+              <el-select
+                v-model="adminUserForm.admins"
+                multiple
+                filterable
+                remote
+                reserve-keyword
+                placeholder="Please enter a keyword"
+                :remote-method="remoteMethod"
+                :loading="loading">
+                <el-option
+                  v-for="item in selected_admins"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+              <span style="margin-right:3px;"></span>
+              <el-button type="primary">담당자 추가</el-button>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label-width="180px" label="단일사업 선택">
+              <el-checkbox-group v-model="adminUserForm.types">
+                <el-checkbox label="1">FTA 활용관 (수출상담회)</el-checkbox>
+                <el-checkbox label="2">FTA 활용관 (수입상담회)</el-checkbox>
+                <el-checkbox label="3">프로젝트 협력관 (IT상담회)</el-checkbox>
+                <el-checkbox label="4">프로젝트 협력관 (환경-신재생에너지)</el-checkbox>
+                <el-checkbox label="5">프로젝트 협력관 (건설플랜트)</el-checkbox>
+              </el-checkbox-group>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <hr>
+      <el-table
+        ref="multipleTable"
+        :data="tableData"
+        style="width: 100%"
+        @selection-change="handleSelectionChange">
+        <el-table-column
+          type="selection"
+          width="55">
+        </el-table-column>
+        <el-table-column
+          label="Date"
+          width="120">
+          <template slot-scope="scope">{{ scope.row.date }}</template>
+        </el-table-column>
+        <el-table-column
+          property="name"
+          label="Name"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          property="address"
+          label="Address"
+          show-overflow-tooltip>
+        </el-table-column>
+      </el-table>
+      <div style="margin-top:10px;"></div>
+      <el-row>
+        <el-col>
+          <el-button >재설정</el-button>
+          <el-button type="primary" >삭제</el-button>
+        </el-col>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogAdminUser = false">취소</el-button>
+        <el-button type="primary" @click="dialogAdminUser = false">저장</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import ElDragSelect from '@/components/DragSelect' // base on element-ui
-import { validURL, validEmail } from '@/utils/validate'
+import { validEmail } from '@/utils/validate'
 import { fetchArticle } from '@/api/article'
 
 const defaultForm = {
@@ -283,8 +373,73 @@ export default {
           label: '우수기업'
         }],
 
-      
+      // 담당자설정 다이얼로그
+      dialogAdminUser: false,
+      adminUserForm: {
+        auth: '1',
+        admins: [], // value
+        types: ['1']
+      },
+
+      //
+      selected_admins: [], // options
+      admin_list: [], // list : 사본
+      loading: false,
+      all_admins: ["Alabama", "Alaska", "Arizona",
+      "Arkansas", "California", "Colorado",
+      "Connecticut", "Delaware", "Florida",
+      "Georgia", "Hawaii", "Idaho", "Illinois",
+      "Indiana", "Iowa", "Kansas", "Kentucky",
+      "Louisiana", "Maine", "Maryland",
+      "Massachusetts", "Michigan", "Minnesota",
+      "Mississippi", "Missouri", "Montana",
+      "Nebraska", "Nevada", "New Hampshire",
+      "New Jersey", "New Mexico", "New York",
+      "North Carolina", "North Dakota", "Ohio",
+      "Oklahoma", "Oregon", "Pennsylvania",
+      "Rhode Island", "South Carolina",
+      "South Dakota", "Tennessee", "Texas",
+      "Utah", "Vermont", "Virginia",
+      "Washington", "West Virginia", "Wisconsin",
+      "Wyoming"],
+      // 개복잡하다..
+
+      tableData: [{
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-02',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-04',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-01',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-08',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-06',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }, {
+          date: '2016-05-07',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        }],
+        multipleSelection: []
     }
+  },
+  mounted() {
+    this.admin_list = this.all_admins.map(item => {
+      return { value: `value:${item}`, label: `label:${item}` };
+    });
   },
   computed: {
     displayTime: {
@@ -349,8 +504,40 @@ export default {
 
     },
     removeConsultTime(index) {
+      // 상담시간 삭제
       this.consultForm.consult_times.splice(index, 1);
-    }
+    },
+
+    setAdminUser() {
+      // 상담자 설정 다이얼로그 열기
+      this.dialogAdminUser = true;
+    },
+    toggleSelection(rows) {
+      if (rows) {
+        rows.forEach(row => {
+          this.$refs.multipleTable.toggleRowSelection(row);
+        });
+      } else {
+        this.$refs.multipleTable.clearSelection();
+      }
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
+    remoteMethod(query) {
+        if (query !== '') {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.selected_admins = this.admin_list.filter(item => {
+              return item.label.toLowerCase()
+                .indexOf(query.toLowerCase()) > -1;
+            });
+          }, 200);
+        } else {
+          this.selected_admins = [];
+        }
+      }
   },
 };
 </script>
