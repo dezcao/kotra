@@ -266,8 +266,8 @@ export const asyncRoutes = [
       },
       {
         path: 'trade',
-        component: () => import('@/views/permission/page'),
-        name: 'StatisticTrade',
+        component: () => import('@/views/kotra/statistic/trade_chart'),
+        name: 'TradeChart',
         meta: {
           title: 'statisticTrade',
           roles: ['admin'] // or you can only set roles in sub nav
@@ -275,8 +275,8 @@ export const asyncRoutes = [
       },
       {
         path: 'company',
-        component: () => import('@/views/permission/page'),
-        name: 'StatisticCompany',
+        component: () => import('@/views/kotra/statistic/raddar_chart'),
+        name: 'RaddarChart',
         meta: {
           title: 'statisticCompany',
           roles: ['admin'] // or you can only set roles in sub nav
@@ -297,8 +297,8 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'user',
-        component: () => import('@/views/permission/page'),
+        path: 'user', // 사용자 권한
+        component: () => import('@/views/kotra/etc/user'),
         name: 'EctUser',
         meta: {
           title: 'ectUser',
@@ -306,8 +306,8 @@ export const asyncRoutes = [
         }
       },
       {
-        path: 'company',
-        component: () => import('@/views/permission/page'),
+        path: 'company', // 대행사 관리
+        component: () => import('@/views/kotra/etc/company'),
         name: 'EtcCompany',
         meta: {
           title: 'etcCompany',
@@ -315,8 +315,8 @@ export const asyncRoutes = [
         }
       },
       {
-        path: 'email',
-        component: () => import('@/views/permission/page'),
+        path: 'email', // 이메일
+        component: () => import('@/views/kotra/etc/email'),
         name: 'EtcEmail',
         meta: {
           title: 'etcEmail',
@@ -324,8 +324,8 @@ export const asyncRoutes = [
         }
       },
       {
-        path: 'survey',
-        component: () => import('@/views/permission/page'),
+        path: 'survey', // 설문
+        component: () => import('@/views/kotra/etc/survey'),
         name: 'EtcSurvey',
         meta: {
           title: 'etcSurvey',
@@ -333,8 +333,8 @@ export const asyncRoutes = [
         }
       },
       {
-        path: 'notice',
-        component: () => import('@/views/permission/page'),
+        path: 'notice', // 공지
+        component: () => import('@/views/kotra/etc/notice'),
         name: 'EtcNotice',
         meta: {
           title: 'etcNotice',
@@ -342,8 +342,8 @@ export const asyncRoutes = [
         }
       },
       {
-        path: 'qa',
-        component: () => import('@/views/permission/page'),
+        path: 'qa', // Q&A
+        component: () => import('@/views/kotra/etc/notice'),
         name: 'EtcQA',
         meta: {
           title: 'etcQA',
@@ -352,7 +352,7 @@ export const asyncRoutes = [
       },
       {
         path: 'code',
-        component: () => import('@/views/permission/page'),
+        component: () => import('@/views/kotra/etc/code'),
         name: 'EtcCode',
         meta: {
           title: 'etcCode',
@@ -361,38 +361,38 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/kotra', // 데모 페이지
-    component: Layout,
-    redirect: '/kotra/demo',
-    alwaysShow: true, // will always show the root menu
-    name: 'Kotra',
-    meta: {
-      title: 'kotra', // will i18n route.permission
-      icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
-    },
-    children: [
-      {
-        path: 'demo',
-        component: () => import('@/views/components-demo/kotra'),
-        name: 'KotraDemo',
-        meta: {
-          title: 'demo',
-          roles: ['admin'] // or you can only set roles in sub nav
-        }
-      },
-      {
-        path: 'calendar',
-        component: () => import('@/views/components-demo/calendar'),
-        name: 'KotraCalendar',
-        meta: {
-          title: 'calendar',
-          roles: ['admin'] // or you can only set roles in sub nav
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/kotra', // 데모 페이지
+  //   component: Layout,
+  //   redirect: '/kotra/demo',
+  //   alwaysShow: true, // will always show the root menu
+  //   name: 'Kotra',
+  //   meta: {
+  //     title: 'kotra', // will i18n route.permission
+  //     icon: 'lock',
+  //     roles: ['admin', 'editor'] // you can set roles in root nav
+  //   },
+  //   children: [
+  //     {
+  //       path: 'demo',
+  //       component: () => import('@/views/components-demo/kotra'),
+  //       name: 'KotraDemo',
+  //       meta: {
+  //         title: 'demo',
+  //         roles: ['admin'] // or you can only set roles in sub nav
+  //       }
+  //     },
+  //     {
+  //       path: 'calendar',
+  //       component: () => import('@/views/components-demo/calendar'),
+  //       name: 'KotraCalendar',
+  //       meta: {
+  //         title: 'calendar',
+  //         roles: ['admin'] // or you can only set roles in sub nav
+  //       }
+  //     }
+  //   ]
+  // },
 
   // 아래는 처음부터 있던것.
   // {

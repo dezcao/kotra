@@ -24,7 +24,7 @@ export default {
 
     etc: '기타',
     ectUser: '사용자권한관리',
-    etcCompany: '대행업체 관리',
+    etcCompany: '대행사 관리',
     etcEmail: '이메일/SMS관리',
     etcSurvey: '설문관리',
     etcNotice: '공지사항관리',
