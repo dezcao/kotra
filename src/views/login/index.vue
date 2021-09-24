@@ -25,17 +25,17 @@
       </el-form-item>
 
       <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
-        <el-form-item prop="password">
+        <el-form-item prop="user_pw">
           <span class="svg-container">
-            <svg-icon icon-class="password" />
+            <svg-icon icon-class="user_pw" />
           </span>
           <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            :placeholder="$t('login.password')"
-            name="password"
+            :key="user_pwType"
+            ref="user_pw"
+            v-model="loginForm.user_pw"
+            :type="user_pwType"
+            :placeholder="$t('login.user_pw')"
+            name="user_pw"
             tabindex="2"
             autocomplete="on"
             @keyup.native="checkCapslock"
@@ -43,7 +43,7 @@
             @keyup.enter.native="handleLogin"
           />
           <span class="show-pwd" @click="showPwd">
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            <svg-icon :icon-class="user_pwType === 'user_pw' ? 'eye' : 'eye-open'" />
           </span>
         </el-form-item>
       </el-tooltip>
@@ -55,13 +55,13 @@
       <div style="position:relative">
         <div class="tips">
           <span>{{ $t('login.username') }} : admin</span>
-          <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
+          <span>{{ $t('login.user_pw') }} : {{ $t('login.any') }}</span>
         </div>
         <div class="tips">
           <span style="margin-right:18px;">
             {{ $t('login.username') }} : editor
           </span>
-          <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
+          <span>{{ $t('login.user_pw') }} : {{ $t('login.any') }}</span>
         </div>
 
         <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
@@ -96,9 +96,9 @@ export default {
         callback()
       }
     }
-    const validatePassword = (rule, value, callback) => {
+    const validateuser_pw = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+        callback(new Error('The user_pw can not be less than 6 digits'))
       } else {
         callback()
       }
@@ -106,13 +106,13 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        user_pw: '11112222'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        user_pw: [{ required: true, trigger: 'blur', validator: validateuser_pw }]
       },
-      passwordType: 'password',
+      user_pwType: 'user_pw',
       capsTooltip: false,
       loading: false,
       showDialog: false,
@@ -138,8 +138,8 @@ export default {
   mounted() {
     if (this.loginForm.username === '') {
       this.$refs.username.focus()
-    } else if (this.loginForm.password === '') {
-      this.$refs.password.focus()
+    } else if (this.loginForm.user_pw === '') {
+      this.$refs.user_pw.focus()
     }
   },
   destroyed() {
@@ -151,13 +151,13 @@ export default {
       this.capsTooltip = key && key.length === 1 && (key >= 'A' && key <= 'Z')
     },
     showPwd() {
-      if (this.passwordType === 'password') {
-        this.passwordType = ''
+      if (this.user_pwType === 'user_pw') {
+        this.user_pwType = ''
       } else {
-        this.passwordType = 'password'
+        this.user_pwType = 'user_pw'
       }
       this.$nextTick(() => {
-        this.$refs.password.focus()
+        this.$refs.user_pw.focus()
       })
     },
     handleLogin() {

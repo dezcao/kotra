@@ -31,24 +31,24 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
+    const { username, user_pw } = userInfo
     return new Promise((resolve, reject) => {
-      try {
-        commit('SET_TOKEN', 'admin-token')
-        setToken('admin-token')
-        resolve()
-      } catch (error) {
-        reject(error)
-      }
-
-      // login({ username: username.trim(), password: password }).then(response => {
-      //   const { data } = response
-      //   commit('SET_TOKEN', data.token)
-      //   setToken(data.token)
+      // try {
+      //   commit('SET_TOKEN', 'admin-token')
+      //   setToken('admin-token')
       //   resolve()
-      // }).catch(error => {
+      // } catch (error) {
       //   reject(error)
-      // })
+      // }
+
+      login({ username: username.trim(), user_pw: user_pw }).then(response => {
+        const { data } = response
+        commit('SET_TOKEN', data.auth_token)
+        setToken(data.auth_token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
     })
   },
 

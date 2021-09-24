@@ -110,6 +110,7 @@ export default {
     title: 'Login Form',
     logIn: 'Login',
     username: 'Username',
+    user_pw: 'Password',
     password: 'Password',
     any: 'any',
     thirdparty: 'Or connect with',

@@ -47,7 +47,12 @@ export default {
   methods: {
     fetchData() {
       transactionList().then(response => {
-        this.list = response.data.items.slice(0, 8)
+        this.list = [{
+          order_no: '1',
+          price: '1000',
+          staus: 'a'
+        }]
+        // this.list = response.data.items.slice(0, 8)
       })
     }
   }
